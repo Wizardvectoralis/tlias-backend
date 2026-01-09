@@ -4,6 +4,7 @@
 
 <mapper namespace="com.tlias.mapper.EmpMapper">
 
+
     <select id="getEmpsInOnePage" resultType="com.tlias.pojo.Emp">
         select * from emp
         <where>
@@ -39,8 +40,23 @@
                 and entrydate &lt; #{end}
             </if>
         </where>
-
     </select>
+
+    <!-- delete标签没有resulttype属性，默认返回int值 -->
+    <delete id="deleteEmpsByIds" >
+        delete from emp
+        <!-- 即使只有一个条件也建议用where标签，除了自动提供where关键字，还能自动删除条件前面多余的and或or -->
+        <where>
+            id in
+               <foreach collection="ids" item="id" open="(" close=")" separator=",">
+                   #{id}
+               </foreach>
+         </where>
+
+
+
+
+    </delete>
 
 
 </mapper>

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -34,13 +35,34 @@ public class  EmpController {
             @RequestParam(required = false) LocalDate end,
             @RequestParam(defaultValue = "1") long page,
             @RequestParam(defaultValue = "10") long pageSize ) {
-
-
-        log.info("哈哈哈+++++controller getEmps get parms name:{},gender:{},begin:{},end:{},page:{},pageSize:{}",
+        log.info("controller getEmps get parms name:{},gender:{},begin:{},end:{},page:{},pageSize:{}",
                 name,gender,begin,end,page,pageSize);
 
         PageBean pageBean= empService.getEmps(name,gender,begin,end,page,pageSize);
         return Result.success(pageBean);
+    }
+
+    //根据id批量删除用户，同时返回删除的条目数
+    @DeleteMapping("/emps/{ids}")
+    /*pathvariable注解的作用原本是将占位符对应的位置转化为单个对象，
+    可以考虑将传过来的东西转化为单个字符串-字符串数组-再遍历为Long集合
+
+    */
+    public Result deleteEmpsByIds(@PathVariable List<Long> ids) {
+
+
+        try {
+            int deletedNum= empService.deleteEmpsByIds(ids);
+            return Result.success(deletedNum+"条项目删除成功");
+        }catch (Exception e) {
+
+            return Result.error("controller层的方法出现问题："+e.getMessage());
+        }
+
+
+
+
+
     }
 
 

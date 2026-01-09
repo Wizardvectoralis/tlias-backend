@@ -27,4 +27,7 @@ public interface EmpMapper {
                                LocalDate end,
 
                                long pageSize);
+
+    //delete方法会默认返回一个int值
+    int deleteEmpsByIds(List<Long> ids);
 }

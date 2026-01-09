@@ -28,4 +28,12 @@ public class EmpServiceImpl implements EmpService {
 
         return new PageBean(empNumber,empsInOnePage);
     }
+
+    @Override
+    public int deleteEmpsByIds(List<Long> ids) {
+
+        int deletedNum= empMapper.deleteEmpsByIds(ids);
+
+        return deletedNum;
+    }
 }

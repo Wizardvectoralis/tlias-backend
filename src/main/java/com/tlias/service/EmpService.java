@@ -3,6 +3,7 @@ package com.tlias.service;
 import com.tlias.pojo.PageBean;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public interface EmpService {
     PageBean getEmps(String name,
@@ -11,4 +12,6 @@ public interface EmpService {
                      LocalDate end,
                      long page,
                      long pageSize);
+
+    int deleteEmpsByIds(List<Long> ids);
 }
