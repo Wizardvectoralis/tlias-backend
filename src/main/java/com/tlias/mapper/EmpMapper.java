@@ -2,6 +2,7 @@ package com.tlias.mapper;
 
 import com.tlias.pojo.Emp;
 import com.tlias.pojo.Result;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -30,4 +31,10 @@ public interface EmpMapper {
 
     //delete方法会默认返回一个int值
     int deleteEmpsByIds(List<Long> ids);
+
+    @Insert("insert into emp" +
+            "(username, name, gender, entrydate,  create_time, update_time) " +
+            "VALUES" +
+            "(#{username},#{name},#{gender},#{entrydate},#{createTime},#{updateTime}) ")
+    void addEmp(Emp emp);
 }

@@ -1,5 +1,6 @@
 package com.tlias.controller;
 
+import com.tlias.pojo.Emp;
 import com.tlias.pojo.PageBean;
 import com.tlias.pojo.Result;
 import com.tlias.service.EmpService;
@@ -46,7 +47,7 @@ public class  EmpController {
     @DeleteMapping("/emps/{ids}")
     /*pathvariable注解的作用原本是将占位符对应的位置转化为单个对象，
     可以考虑将传过来的东西转化为单个字符串-字符串数组-再遍历为Long集合
-
+    不知道为什么黑马要在路径参数传递数字集合，建议通过Params参数传递
     */
     public Result deleteEmpsByIds(@PathVariable List<Long> ids) {
 
@@ -58,11 +59,13 @@ public class  EmpController {
 
             return Result.error("controller层的方法出现问题："+e.getMessage());
         }
+    }
 
+    @PostMapping("/emps")
+    public Result addEmp(@RequestBody Emp emp) {
 
-
-
-
+        empService.addEmp(emp);
+        return Result.success("添加成功");
     }
 
 

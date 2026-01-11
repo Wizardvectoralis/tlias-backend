@@ -1,5 +1,6 @@
 package com.tlias.service;
 
+import com.tlias.pojo.Emp;
 import com.tlias.pojo.PageBean;
 
 import java.time.LocalDate;
@@ -14,4 +15,6 @@ public interface EmpService {
                      long pageSize);
 
     int deleteEmpsByIds(List<Long> ids);
+
+    void addEmp(Emp emp);
 }
