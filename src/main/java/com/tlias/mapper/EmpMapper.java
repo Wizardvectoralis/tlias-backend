@@ -40,4 +40,7 @@ public interface EmpMapper {
 
     @Select("select * from emp where id=#{id}")
     Emp getEmpById(Long id);
+
+
+    void updateEmp(Emp emp);
 }

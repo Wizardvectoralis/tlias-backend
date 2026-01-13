@@ -19,4 +19,6 @@ public interface EmpService {
     void addEmp(Emp emp);
 
     Emp getEmpById(Long id);
+
+    void updateEmp(Emp emp);
 }

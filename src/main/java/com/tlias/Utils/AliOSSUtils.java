@@ -8,6 +8,7 @@ import com.aliyun.oss.common.auth.EnvironmentVariableCredentialsProvider;
 import com.aliyun.oss.common.comm.SignVersion;
 import com.aliyun.oss.model.PutObjectRequest;
 import com.aliyun.oss.model.PutObjectResult;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -20,8 +21,8 @@ public class AliOSSUtils {
 
 
     // Endpoint以华东1（杭州）为例，其它Region请按实际情况填写。
-    private final String endpoint = "https://oss-cn-beijing.aliyuncs.com";
-    // 从环境变量中获取访问凭证。运行本代码示例之前，请确保已设置环境变量OSS_ACCESS_KEY_ID和OSS_ACCESS_KEY_SECRET。
+    @Value("${aliyun.oss.endpoint}")
+    private String endpoint;//为了演示注解注入值，暂时不用final修饰
 
     // 填写Bucket名称，例如examplebucket。
     private final String bucketName = "tlias20260112";
@@ -35,6 +36,7 @@ public class AliOSSUtils {
 
     public String upload(MultipartFile multipartFile) throws Exception {
 
+        // 从环境变量中获取访问凭证。运行本代码示例之前，请确保已设置环境变量OSS_ACCESS_KEY_ID和OSS_ACCESS_KEY_SECRET。
         EnvironmentVariableCredentialsProvider credentialsProvider = CredentialsProviderFactory.newEnvironmentVariableCredentialsProvider();
         ClientBuilderConfiguration clientBuilderConfiguration = new ClientBuilderConfiguration();
         clientBuilderConfiguration.setSignatureVersion(SignVersion.V4);

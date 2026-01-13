@@ -15,11 +15,11 @@ public class Emp {
     private String username;
     private String password;
     private String name;
-    private Integer gender;
+    private Integer gender;//1男，2女
     private String image;
-    private Integer job;
+    private Integer job; //说明: 1 班主任,2 讲师, 3 学工主管, 4 教研主管, 5 咨询师'
     private LocalDate entrydate;
-    private Integer deptId;
+    private Integer deptId;//1-5之间的数
     private LocalDateTime createTime;
     private LocalDateTime updateTime;
 }

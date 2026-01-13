@@ -1,0 +1,57 @@
+spring:
+  #数据库相关信息
+  application:
+    name: tlias
+  datasource:
+    url: jdbc:mysql://localhost:3306/tlias
+    username: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: 199653
+  #文件上传配置
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+#mybatis配置信息
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+
+#日志相关
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{50} - %msg%n"
+  file:
+    enabled: false
+  level:
+    root: info
+
+#阿里云相关配置
+aliyun:
+  oss:
+    endpoint: https://oss-cn-beijing.aliyuncs.com
+    bucketName: lias20260112
+    
+    
+    
+    #配置阿里云相关信息
+#    aliyun.oss.endpoint=https://oss-cn-beijing.aliyuncs.com
+#    aliyun.oss.bucketName=tlias20260112
+  #配置mybatis的日志，指定输出到控制台
+#mybatis.configuration.log-impl=org.apache.ibatis.logging.stdout.StdOutImpl
+# 配置单个文件最大大小
+#  spring.servlet.multipart.max-file-size=10MB
+  # 配置单次请求文件最大限制（一次请求可以上传多个文件）
+#  spring.servlet.multipart.max-request-size=100MB
+  # 以下几行代码保证了controller层的log日志打印到控制台
+  # 核心：开启全局INFO级别日志（Controller的log.info()属于这个体系）
+#logging.level.root=INFO
+  # 确保日志输出到控制台（避免只输出到文件）
+#logging.file.enabled=false
+  # 可选：配置日志格式，让输出更清晰
+#logging.pattern.console=%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{50} - %msg%n
+  
+  # springboot文件上传默认大小限制为1M
+
+

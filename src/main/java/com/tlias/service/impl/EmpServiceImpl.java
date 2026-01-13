@@ -55,4 +55,11 @@ public class EmpServiceImpl implements EmpService {
 
         return emp;
     }
+
+    @Override
+    public void updateEmp(Emp emp) {
+
+        emp.setUpdateTime(LocalDateTime.now());
+        empMapper.updateEmp(emp);
+    }
 }

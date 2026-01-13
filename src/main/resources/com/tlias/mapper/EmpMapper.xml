@@ -4,6 +4,42 @@
 
 <mapper namespace="com.tlias.mapper.EmpMapper">
 
+    <update id="updateEmp">
+        update emp
+        <set>
+            <if test="username!=null and username!=''">
+                username=#{username},
+            </if>
+            <if test="password!=null and password!=''">
+                password=#{password},
+            </if>
+            <if test="name!=null and name!=''">
+                name=#{name},
+            </if>
+            <if test="gender==1 or gender==2">
+                gender=#{gender},
+            </if>
+            <if test="image!=null and image!=''">
+                image=#{image},
+            </if>
+            <if test="job &gt;=1 or job &lt;=5">
+                job=#{job},
+            </if>
+            <if test="entrydate!=null">
+                entrydate=#{entrydate},
+            </if>
+            <if test="deptId &gt;=1 and deptId &lt;=5">
+                dept_id=#{deptId},
+            </if>
+            <if test="updateTime!=null">
+                update_time=#{updateTime}
+            </if>
+        </set>
+        <where>
+            id=#{id}
+        </where>
+    </update>
+
 
     <select id="getEmpsInOnePage" resultType="com.tlias.pojo.Emp">
         select * from emp
@@ -34,10 +70,10 @@
                 and gender=#{gender}
             </if>
             <if test="begin!=null">
-                and entrydate &gt; #{begin}
+                and entrydate &gt;= #{begin}
             </if>
             <if test="end!=null">
-                and entrydate &lt; #{end}
+                and entrydate &lt;= #{end}
             </if>
         </where>
     </select>
