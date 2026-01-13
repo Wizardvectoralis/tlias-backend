@@ -17,4 +17,6 @@ public interface EmpService {
     int deleteEmpsByIds(List<Long> ids);
 
     void addEmp(Emp emp);
+
+    Emp getEmpById(Long id);
 }

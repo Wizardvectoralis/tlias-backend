@@ -37,4 +37,7 @@ public interface EmpMapper {
             "VALUES" +
             "(#{username},#{name},#{gender},#{entrydate},#{createTime},#{updateTime}) ")
     void addEmp(Emp emp);
+
+    @Select("select * from emp where id=#{id}")
+    Emp getEmpById(Long id);
 }

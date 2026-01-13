@@ -28,7 +28,7 @@ public class  EmpController {
 
     @GetMapping("/emps")
     //RequestParams中的defaultValue属性：当前端未传page和pageZize时，page默认为1，pageSize默认默认为10
-    //根据条件查询员工
+    //根据条件查询员工如无条件则全部显示
     public Result getEmps(
             @RequestParam String name,
             @RequestParam(defaultValue = "0") int gender,
@@ -61,11 +61,21 @@ public class  EmpController {
         }
     }
 
+    //添加员工
     @PostMapping("/emps")
     public Result addEmp(@RequestBody Emp emp) {
 
         empService.addEmp(emp);
         return Result.success("添加成功");
+    }
+
+    //根据id查询员工
+    @GetMapping("/emps/{id}")
+    public Result getEmpById(@PathVariable Long id){
+
+        Emp emp= empService.getEmpById(id);
+
+        return Result.success(emp);
     }
 
 
