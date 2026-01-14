@@ -3,6 +3,10 @@ package com.tlias;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+
 @SpringBootTest
 class TliasApplicationTests {
 
@@ -15,6 +19,18 @@ class TliasApplicationTests {
         System.out.println(name.substring(3));
         String substring = name.substring(name.lastIndexOf("."));
         System.out.println(substring);
+
+    }
+
+    @Test
+    void testDate(){
+        LocalDate localDate = LocalDate.now();
+        LocalTime localTime = LocalTime.now();
+        LocalDateTime  localDateTime = LocalDateTime.now();
+        System.out.println(localDate);
+        System.out.println(localTime);
+        System.out.println(localDateTime);
+
 
 
     }
