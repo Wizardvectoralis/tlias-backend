@@ -85,6 +85,11 @@
             <version>2.3.3</version>
         </dependency>
 <!--        以上为阿里云相关依赖-->
+<!--        以下为注解ConfigurationProperties注解用到的依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+        </dependency>
 
     </dependencies>
 

@@ -8,6 +8,8 @@ import com.aliyun.oss.common.auth.EnvironmentVariableCredentialsProvider;
 import com.aliyun.oss.common.comm.SignVersion;
 import com.aliyun.oss.model.PutObjectRequest;
 import com.aliyun.oss.model.PutObjectResult;
+import com.tlias.config.AliOSSProperties;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
@@ -18,14 +20,16 @@ import java.util.UUID;
 
 @Component
 public class AliOSSUtils {
+    @Autowired
+    AliOSSProperties aliOSSProperties;
 
 
     // Endpoint以华东1（杭州）为例，其它Region请按实际情况填写。
-    @Value("${aliyun.oss.endpoint}")
-    private String endpoint;//为了演示注解注入值，暂时不用final修饰
-
-    // 填写Bucket名称，例如examplebucket。
-    private final String bucketName = "tlias20260112";
+//    @Value("${aliyun.oss.endpoint}")
+//    private String endpoint;//为了演示注解注入值，暂时不用final修饰
+//
+//    // 填写Bucket名称，例如examplebucket。
+//    private final String bucketName = "tlias20260112";
 
     // 填写本地文件的完整路径，例如D:\\localpath\\examplefile.txt。
     // 如果未指定本地路径，则默认从示例程序所属项目对应本地路径中上传文件流。
@@ -41,7 +45,7 @@ public class AliOSSUtils {
         ClientBuilderConfiguration clientBuilderConfiguration = new ClientBuilderConfiguration();
         clientBuilderConfiguration.setSignatureVersion(SignVersion.V4);
         OSS ossClient = OSSClientBuilder.create()
-                .endpoint(endpoint)
+                .endpoint(aliOSSProperties.getEndpoint())
                 .credentialsProvider(credentialsProvider)
                 .clientConfiguration(clientBuilderConfiguration)
                 .region(region)
@@ -55,7 +59,7 @@ public class AliOSSUtils {
                 + UUID.randomUUID().toString()
                 +originalFilename.substring(originalFilename.lastIndexOf("."));
         InputStream multipartFileInputStream= multipartFile.getInputStream();
-        PutObjectRequest putObjectRequest = new PutObjectRequest(bucketName, objectName, multipartFileInputStream);
+        PutObjectRequest putObjectRequest = new PutObjectRequest(aliOSSProperties.getBucketName(), objectName, multipartFileInputStream);
         // 创建PutObject请求。
         PutObjectResult result = ossClient.putObject(putObjectRequest);
         if (ossClient != null) {
