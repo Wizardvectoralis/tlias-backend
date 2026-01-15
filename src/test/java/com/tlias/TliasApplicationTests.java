@@ -1,14 +1,26 @@
 package com.tlias;
 
+import io.jsonwebtoken.Jwt;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.io.Encoders;
+import io.jsonwebtoken.security.Keys;
+import io.jsonwebtoken.security.Password;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.crypto.SecretKey;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.Base64;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 @SpringBootTest
 class TliasApplicationTests {
+
 
     @Test
     void contextLoads() {
@@ -22,17 +34,6 @@ class TliasApplicationTests {
 
     }
 
-    @Test
-    void testDate(){
-        LocalDate localDate = LocalDate.now();
-        LocalTime localTime = LocalTime.now();
-        LocalDateTime  localDateTime = LocalDateTime.now();
-        System.out.println(localDate);
-        System.out.println(localTime);
-        System.out.println(localDateTime);
 
-
-
-    }
 
 }
