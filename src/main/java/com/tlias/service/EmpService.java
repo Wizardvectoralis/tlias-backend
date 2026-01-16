@@ -21,4 +21,6 @@ public interface EmpService {
     Emp getEmpById(Long id);
 
     void updateEmp(Emp emp);
+
+    Emp getEmpByUserNameAndPassword(Emp emp);
 }

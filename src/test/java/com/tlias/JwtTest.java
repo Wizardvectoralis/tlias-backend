@@ -21,16 +21,6 @@ public class JwtTest {
     //这就是用Jwts.SIG.HS256.key().创建秘钥并用code64编码的结果，所有二进制数据都用64个可打印字符表示
     public final String base64EncodedSecret_Key="E5zWDoKLEdI+0D+X6mVNxO1bk+rf/ms3soZWb2z1ig8=";
 
-    @Test
-    void testDate(){
-        LocalDate localDate = LocalDate.now();
-        LocalTime localTime = LocalTime.now();
-        LocalDateTime localDateTime = LocalDateTime.now();
-        System.out.println(localDate);
-        System.out.println(localTime);
-        System.out.println(localDateTime);
-
-    }
     //设置秘钥，至少32个字符且至少256位（utf编码一个英语字母占8位）但githubjjwt不建议用getbytes方法
     //private static final SecretKey SECRET_KEY = Keys.hmacShaKeyFor("wangleileishizhu123Kwangleileishizhu123Kwangleileishizhu123K".getBytes(StandardCharsets.UTF_8));
     //设置过期时间，单位：毫秒
@@ -39,9 +29,11 @@ public class JwtTest {
     //生成令牌
     @Test
     void  generateJWT(){
-        //避免自己创建SecretKey的方式：github建议按照以下代码自动创建，然后用base64编码保存
+        //github建议按照以下代码自动创建一个SecretKey对象，然后用base64编码保存为一个可打印的字符串
         //SecretKey Secret_Key = Jwts.SIG.HS256.key().build();//等价于SecretKey key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
         //String secretKeyString = Encoders.BASE64.encode(Secret_Key.getEncoded());
+
+        //自己创建一个map对象用于稍后装进JWT令牌的载荷
         Map<String,Object> myClaims=new HashMap<>();
         myClaims.put("name1","zhangsan1");
         String jwt = Jwts.builder()
@@ -57,7 +49,6 @@ public class JwtTest {
                 .signWith(Keys.hmacShaKeyFor(Decoders.BASE64.decode(base64EncodedSecret_Key)))//只接受SECRET_KEY变量，会根据SECRET_KEY自动设置令牌头中的alg，并自动决定加密方式：For example, if you call signWith with a SecretKey that is 256 bits (32 bytes) long, it is not strong enough for HS384 or HS512, so JJWT will automatically sign the JWT using HS256.
                 .compact();
         System.out.println("jwt is"+jwt);
-
 
     }
 

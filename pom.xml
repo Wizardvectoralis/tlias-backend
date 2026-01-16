@@ -94,7 +94,6 @@
         </dependency>
 
 <!--        以下为JWT令牌依赖 视频中依赖方式老旧，以下为github最新-->
-
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-api</artifactId>

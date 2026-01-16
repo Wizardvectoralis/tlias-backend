@@ -44,4 +44,8 @@ public interface EmpMapper {
 
     //修改员工
     void updateEmp(Emp emp);
+
+    //登录请求
+    @Select("select * from emp where username=#{username} and password=#{password}")
+    Emp getEmpByUserNameAndPassword(Emp emp);
 }
