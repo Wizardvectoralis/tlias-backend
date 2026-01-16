@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class JwtTest {
+    //这就是用Jwts.SIG.HS256.key().创建秘钥并用code64编码的结果，所有二进制数据都用64个可打印字符表示
     public final String base64EncodedSecret_Key="E5zWDoKLEdI+0D+X6mVNxO1bk+rf/ms3soZWb2z1ig8=";
 
     @Test
@@ -30,7 +31,7 @@ public class JwtTest {
         System.out.println(localDateTime);
 
     }
-    //设置秘钥，至少32个字符且至少256位（utf编码一个英语字母占8位）
+    //设置秘钥，至少32个字符且至少256位（utf编码一个英语字母占8位）但githubjjwt不建议用getbytes方法
     //private static final SecretKey SECRET_KEY = Keys.hmacShaKeyFor("wangleileishizhu123Kwangleileishizhu123Kwangleileishizhu123K".getBytes(StandardCharsets.UTF_8));
     //设置过期时间，单位：毫秒
     public static final long EXPIRATION_TIME = 3600*1000L;
@@ -38,7 +39,7 @@ public class JwtTest {
     //生成令牌
     @Test
     void  generateJWT(){
-        //避免自己创建SecretKey的方式：可以按照以下代码自动创建，然后用base64编码保存
+        //避免自己创建SecretKey的方式：github建议按照以下代码自动创建，然后用base64编码保存
         //SecretKey Secret_Key = Jwts.SIG.HS256.key().build();//等价于SecretKey key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
         //String secretKeyString = Encoders.BASE64.encode(Secret_Key.getEncoded());
         Map<String,Object> myClaims=new HashMap<>();

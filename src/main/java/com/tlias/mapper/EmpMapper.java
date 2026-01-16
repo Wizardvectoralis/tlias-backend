@@ -42,5 +42,6 @@ public interface EmpMapper {
     Emp getEmpById(Long id);
 
 
+    //修改员工
     void updateEmp(Emp emp);
 }
