@@ -3,12 +3,13 @@ package com.tlias.controller;
 import com.tlias.pojo.Dept;
 import com.tlias.pojo.Result;
 import com.tlias.service.DeptService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@Slf4j
 @RestController
 public class DeptController {
 
@@ -42,7 +43,7 @@ public class DeptController {
     @RequestMapping(value = "/depts/{id}",method = RequestMethod.GET)
     public Result get(@PathVariable Integer id) {
         Dept dept=deptService.listById(id);
-
+        System.out.println("controller 层查询到的部门为:"+dept);
         return Result.success(dept);
     }
 

@@ -22,7 +22,7 @@ public class JWTTestFormal {
     //将上述secretKeyString重新命名为base64EncodedSecret_Key，就是下面的字符串
     public final String base64EncodedSecret_Key="E5zWDoKLEdI+0D+X6mVNxO1bk+rf/ms3soZWb2z1ig8=";
 
-    //设置过期时间，单位：毫秒
+    //设置过期时间，单位：毫秒,一小时
     public static final long EXPIRATION_TIME = 3600*1000L;
 
     //生成令牌
