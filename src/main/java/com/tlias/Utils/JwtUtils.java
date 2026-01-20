@@ -14,7 +14,7 @@ public class JwtUtils {
     private static String base64EncodedSecretKey="E5zWDoKLEdI+0D+X6mVNxO1bk+rf/ms3soZWb2z1ig8=";
 
 
-    //方法重载1：通过subject添加用户信息
+    //方法重载1：定义载荷、用户、过期时间
     public static String generateToken(Map<String, Object> claims,String subject, long expiration){
         String jwt= Jwts.builder()
                 .issuer("wanglei001")
@@ -34,6 +34,19 @@ public class JwtUtils {
         String jwt= Jwts.builder()
                 .issuer("wanglei001")
                 .expiration(new Date(System.currentTimeMillis()+expiration))
+                .notBefore(new Date(System.currentTimeMillis()))
+                .claims(claims)
+                .signWith(Keys.hmacShaKeyFor(Decoders.BASE64.decode(base64EncodedSecretKey)))
+                .compact();
+
+        return jwt;
+
+    }
+    //方法重载3：只带用户信息，过期时间默认2小时
+    public static String generateToken(Map<String, Object> claims){
+        String jwt= Jwts.builder()
+                .issuer("wanglei001")
+                .expiration(new Date(System.currentTimeMillis()+7200000L))
                 .notBefore(new Date(System.currentTimeMillis()))
                 .claims(claims)
                 .signWith(Keys.hmacShaKeyFor(Decoders.BASE64.decode(base64EncodedSecretKey)))

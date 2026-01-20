@@ -6,6 +6,7 @@ import com.tlias.pojo.Result;
 import com.tlias.service.EmpService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -31,9 +32,9 @@ public class  EmpController {
     //根据条件查询员工如无条件则全部显示
     public Result getEmps(
             @RequestParam String name,
-            @RequestParam(defaultValue = "0") int gender,
-            @RequestParam(required = false) LocalDate begin,
-            @RequestParam(required = false) LocalDate end,
+            @RequestParam(defaultValue = "0") Integer gender,
+            @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate begin,//DateTimeFormat注解接受时间类型参数
+            @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate end,
             @RequestParam(defaultValue = "1") long page,
             @RequestParam(defaultValue = "10") long pageSize ) {
         log.info("controller getEmps get parms name:{},gender:{},begin:{},end:{},page:{},pageSize:{}",

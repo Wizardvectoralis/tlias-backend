@@ -71,16 +71,16 @@ public class Result {
 
     //操作成功但不需要返回数据
     public static Result success(){
-        return new Result(200, "success", null);
+        return new Result(1, "success", null);
     }
 
     //操作成功但需要返回数据
     public static Result success(Object data){
-        return new Result(200, "success", data);
+        return new Result(1, "success", data);
     }
 
     //操作失败，不返回数据，但是展示错误的信息
     public static Result error(String message){
-        return new Result(500, message, null);
+        return new Result(0, message, null);
     }
 }
