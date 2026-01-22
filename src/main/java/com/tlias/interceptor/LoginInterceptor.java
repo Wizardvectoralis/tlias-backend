@@ -19,7 +19,6 @@ public class LoginInterceptor implements HandlerInterceptor {
 
         System.out.println("preHandle...");
         //已经是httpservletrequest了无需转换
-
         //获取请求url
         String url=request.getRequestURL().toString();
         if (url.contains("login")) {
@@ -65,7 +64,6 @@ public class LoginInterceptor implements HandlerInterceptor {
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         System.out.println("posthandle...");
     }
-
     //做一些收尾工作，只要preHandler返回值为true就执行，否则不执行
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {

@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
-public class InterceptorConfig implements WebMvcConfigurer {
+public class  InterceptorConfig implements WebMvcConfigurer {
     //注入自定义的拦截器对象
     @Autowired
     private LoginInterceptor loginInterceptor;
@@ -15,7 +15,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
     //重写addInterceptors方法
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(loginInterceptor).addPathPatterns("/**").excludePathPatterns("/login");
+        registry.addInterceptor(loginInterceptor).addPathPatterns("/**").excludePathPatterns("/emps/**");
         //拦截除了Login以外的所有路径
         /*
         * 1. "/**"          拦截所有路径
