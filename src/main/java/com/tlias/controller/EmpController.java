@@ -1,5 +1,6 @@
 package com.tlias.controller;
 
+import com.tlias.aop.MyLog;
 import com.tlias.pojo.Emp;
 import com.tlias.pojo.PageBean;
 import com.tlias.pojo.Result;
@@ -71,6 +72,7 @@ public class  EmpController {
     }
 
     //根据id查询员工
+    @MyLog
     @GetMapping("/emps/{id}")
     public Result getEmpById(@PathVariable Long id){
 

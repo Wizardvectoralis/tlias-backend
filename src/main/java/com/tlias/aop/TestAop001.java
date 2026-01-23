@@ -4,10 +4,12 @@ import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Component
 @Aspect
+@Order(1)
 public class TestAop001 {
     @Pointcut("execution(* com.tlias.controller.*.*(..))")//返回值和包名之间必须有空格,切入点最好是接口而不是实现类
     public void pointCut() {
