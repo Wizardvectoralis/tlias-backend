@@ -15,7 +15,7 @@ public class  InterceptorConfig implements WebMvcConfigurer {
     //重写addInterceptors方法
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(loginInterceptor).addPathPatterns("/**").excludePathPatterns("/emps/**");
+        registry.addInterceptor(loginInterceptor).addPathPatterns("/**").excludePathPatterns("/emps/**").excludePathPatterns("/depts/**");
         //拦截除了Login以外的所有路径
         /*
         * 1. "/**"          拦截所有路径
