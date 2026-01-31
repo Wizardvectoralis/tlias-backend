@@ -21,13 +21,13 @@ public class LoginController {
     @PostMapping("/login")
     public Result login(@RequestBody Emp emp){
 
-        //传递进来的用户名和密码为空
+        //如果传递进来的用户名和密码为空则返回错误响应结果
         if (emp.getUsername()==null||emp.getPassword()==null){
             return Result.error("用户名或密码不能为空");
         }
         Emp gotEmp= empService.getEmpByUserNameAndPassword(emp);
 
-        //如果查询到的结果不为空，则将用户id，name，username返回给前端
+        //如果查询到的结果不为空，则将jwt令牌返回给前端
         if (gotEmp!=null){
             Map<String,Object> map = new HashMap<>();
             map.put("id",gotEmp.getId());

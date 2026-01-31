@@ -13,6 +13,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+//创建一个jwt令牌生成和校验的工具类
 public class JWTTestFormal {
 
     //第一步：创建一个SecretKey对象，然后用base64编码保存为一个可打印的字符串
@@ -44,7 +45,8 @@ public class JWTTestFormal {
                 .claim("name2","欣崽")                                   //将自定义单个键值对放进载荷
                 .signWith(Keys.hmacShaKeyFor(Decoders.BASE64.decode(base64EncodedSecret_Key)))
                 //signWith接受SECRET_KEY变量，会根据SECRET_KEY自动设置令牌头中的alg，并自动决定加密方式
-                //Keys.hmacShaKeyFor接收一个字节数组作为参数，Decoders.BASE64.decode()把一个base64编码的字符串转换为字节数组
+                //Keys.hmacShaKeyFor接收一个字节数组作为参数，返回一个SecretKey对象
+                //Decoders.BASE64.decode()把一个base64编码的字符串转换为字节数组
                 .compact();
         System.out.println("jwt is："+jwt);
 

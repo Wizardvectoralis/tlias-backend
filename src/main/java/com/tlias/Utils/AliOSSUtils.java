@@ -23,7 +23,6 @@ public class AliOSSUtils {
     @Autowired
     AliOSSProperties aliOSSProperties;
 
-
     // Endpoint以华东1（杭州）为例，其它Region请按实际情况填写。
 //    @Value("${aliyun.oss.endpoint}")
 //    private String endpoint;//为了演示注解注入值，暂时不用final修饰
@@ -31,12 +30,10 @@ public class AliOSSUtils {
 //    // 填写Bucket名称，例如examplebucket。
 //    private final String bucketName = "tlias20260112";
 
-    // 填写本地文件的完整路径，例如D:\\localpath\\examplefile.txt。
-    // 如果未指定本地路径，则默认从示例程序所属项目对应本地路径中上传文件流。
+
     //String filePath= "C:\\Users\\WangLei\\Pictures\\Screenshots\\新建文件夹屏幕截图 2025-08-11 214321.png";
     // 填写Bucket所在地域。以华东1（杭州）为例，Region填写为cn-hangzhou。
     private final String region = "cn-beijing";
-
 
     public String upload(MultipartFile multipartFile) throws Exception {
 

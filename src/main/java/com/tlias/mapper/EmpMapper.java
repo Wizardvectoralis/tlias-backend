@@ -5,15 +5,11 @@ import com.tlias.pojo.Result;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
-
-
 import java.time.LocalDate;
 import java.util.List;
 
 @Mapper
 public interface EmpMapper {
-
-
 
     long getEmpNumber(String name,
                       int gender,

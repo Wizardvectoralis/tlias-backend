@@ -11,7 +11,9 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Order(1)
 public class TestAop001 {
-    @Pointcut("execution(* com.tlias.controller.*.*(..))")//返回值和包名之间必须有空格,切入点最好是接口而不是实现类
+    @Pointcut("execution(* com.tlias.controller.*.*(..))")
+    //切入controller包下的所有类的所有方法
+    //返回值和包名之间必须有空格,切入点最好是接口而不是实现类
     public void pointCut() {
     }
 

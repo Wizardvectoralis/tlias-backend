@@ -44,16 +44,17 @@ public class LoginFilter implements Filter {
 
         String token=httpServletRequest.getHeader("token");//从请求头中获取token
 
+        //如果token为null或长度小于零则说明没有token，生成一个“未登录”的result对象，将其转化为JSON字符串
         if(!StringUtils.hasLength(token)){  //判断一个字符串是否非null且长度大于0,在org.springframework.util包下
             Result responseResult=Result.error("未登录");
-            String json= JSONObject.toJSONString(responseResult);
-            httpServletResponse.setContentType("application/json;charset=utf-8");
-            httpServletResponse.getWriter().write(json);
+            String json= JSONObject.toJSONString(responseResult);//过滤器不是spring架构，想把对象返回给前端必须先转成json格式
+            httpServletResponse.setContentType("application/json;charset=utf-8");// 设置响应头setContentType("application/json;charset=utf-8")告诉前端数据类型和编码方式（如果是springboot框架例如restcontroller层则会自动设置无需手动）
+            httpServletResponse.getWriter().write(json);//获取字符输出流到响应体，并将JSON字符串写入到响应体中，结束doFilter方法
             return;
         }
-        //如果token为null或长度小于零则说明没有token，生成一个“未登录”的result对象，将其转化为JSON字符串
-        // 设置响应头setContentType("application/json;charset=utf-8")告诉前端数据类型和编码方式（如果是springboot框架例如restcontroller层则会自动设置无需手动）
-        //获取字符输出流到响应体，并将JSON字符串写入到响应体中，结束doFilter方法
+
+
+
         try {
             JwtUtils.parseJwt(token);
         }catch (Exception e){

@@ -33,16 +33,17 @@ public class UploadController {
         //getName获取的是表单项的名称，也就是image，getOriginalFilenam是获取用户原始文件名的（包括后缀），也就是海边.img
         //String name = image.getName();
         //String originalFilename = image.getOriginalFilename();
-        //把接收到的文件存储在某个目录中，接收一个File对象
-        //新建文件夹后面必须有\\，不然就放咱同级目录下了
+
+
+        //新建文件夹后面必须有\\，不然就放在同级目录下了
         //直接将用户的文件名存放存在问题：假设两个用户的文件名相同，那么后来的用户图片就会覆盖前面的用户数据
         //image.transferTo(new File("C:\\Users\\WangLei\\Pictures\\Screenshots\\新建文件夹\\"+originalFilename));
 
         //注意：此处需要保证originFileName不为null，否则报错
         //lastindexof方法：返回字符串参数所在的索引，例如“helloworld.vue”.lastindexof(".")，就会返回
         //String extname = originalFilename.substring(originalFilename.lastIndexOf("."));
+
         //randomUuid:生成一个随机的8-4-4-4-12 分隔的 32 位十六进制字符串（比如 3f2504e0-4f89-41d3-9a0c0305e82c3301）标识符，是一个uuid对象
-        //可以调用tostring方法将此uuid对象字符串
         //String newFileName = UUID.randomUUID().toString() + extname;
 
         //String extname = originalFilename.substring(originalFilename.lastIndexOf("."));

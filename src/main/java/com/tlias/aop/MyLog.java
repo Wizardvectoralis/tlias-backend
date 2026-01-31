@@ -4,6 +4,7 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+/*自定义一个注解类，这个类只定义一个注解类就行，没有内部方法，唯一的作用就是标记*/
 
 @Target(ElementType.METHOD)       //自定义的注解可以作用在哪些java元素上，方法上还是类上
 @Retention(RetentionPolicy.RUNTIME)        //定义注解保留到哪个阶段

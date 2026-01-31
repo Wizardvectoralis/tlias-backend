@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-@Slf4j
-@RestController
+@Slf4j  //打印日志
+@RestController //标记这是个controller层类，把所有方法的返回值转换成接口响应给前端
 public class DeptController {
 
     @Autowired
